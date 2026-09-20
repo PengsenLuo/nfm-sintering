@@ -15,11 +15,7 @@ measurement.
 > Pengsen Luo, Yunlong Zhang, Zhan Shen, Chengan Liao, Zi-Feng Ma\*.
 > **Hierarchical Design and Manufacturing of Sodium-Ion Layered Oxide
 > Cathode Powders via Scale-Selective Control of Precursor Architecture and
-> Thermal History.** *(Journal, year, volume, pages — to be completed on
-> publication.)*
-
-See `CITATION.cff` for a machine-readable citation record. The DOI and
-journal details will be filled in once the paper is published.
+> Thermal History.** 
 
 ## Repository structure
 
@@ -128,7 +124,7 @@ print(df.groupby("precursor")["D_sec"].mean())
 | `data/raw/sem/` | ~970 raw SEM TIFF images | **No** — see below |
 | `data/interim/` | Per-instrument feature tables and processing diagnostics | Yes (image-only diagnostic subfolders, e.g. segmentation overlay PNGs, are excluded — they are not needed to reproduce any reported number) |
 | `data/processed/master_table.csv` | The 81-sample joined table every reported number derives from | Yes |
-| `source_data/` | Per-figure-panel Source Data (see above) | Yes, except Fig. 5(a) — see "Known limitations" |
+| `source_data/` | Per-figure-panel Source Data (see above) | Yes |
 
 **Raw SEM images are not included** (roughly 760 MB across ~970 TIFF files,
 which would make this repository unreasonably large to clone). If you need
@@ -168,11 +164,6 @@ docstrings for which measurement uses which path).
   and the reasoning. The activation-energy parameter `Q` in the model is
   not identifiable from this dataset (see `training.pinn` comments in
   `configs/config.yaml`).
-- **Figure 5(a) Source Data is withheld from this release.** The analysis
-  repository's manifest for this panel lists 18 candidate 500× SEM images,
-  but the panel as published appears to use a different set of 6 images at
-  2000× magnification. This discrepancy was not resolved before packaging
-  this repository; see `source_data/README.txt` and `source_data/MANIFEST.csv`.
 - Williamson–Hall grain-size/microstrain values (`D_XRD_WH`, `microstrain_WH`)
   have poor fit stability (R² 0.16–0.40 across samples) and are retained
   only as a qualitative cross-check, not a quantitative result — see
