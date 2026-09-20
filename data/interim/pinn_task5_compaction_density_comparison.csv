@@ -1,0 +1,4 @@
+model,R2,MAE
+(a) Theta-only + precursor one-hot,0.6388032412826102,0.06218839889450292
+"(b) full-feature MLP, physics off",0.6725085497196103,0.05844228426615399
+"(c) full-feature PINN, physics on",0.6667708672353471,0.05934599852856297

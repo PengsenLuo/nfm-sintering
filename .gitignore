@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+*.bak
+~$*
+.DS_Store
+
+# Not distributed in this repository (see README "Data" section)
+data/raw/sem/
+src/nfm/models/*.pth
+
+# Working notes from assembling this public release (not for publication)
+/_INVENTORY.md
+
+# Local output of the scripts under scripts/ (not tracked; regenerate by running them)
+/reports/
+/manuscript/

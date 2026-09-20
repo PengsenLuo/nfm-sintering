@@ -1,0 +1,30 @@
+======================================================================
+任务1:Q 可识别性判定 —— Q_init in {150, 200, 250} kJ/mol
+架构:与任务4相同的 view_pinn_full 共享主干(7 target)
+======================================================================
+
+--- Q_init = 150.0 kJ/mol ---
+  全量拟合(81样本):learned Q = 149.5243 kJ/mol, Δ=-0.4757 (-0.317%), epoch0 grad=0.00279372, epoch0 |step|=0.00100708, 跑了 363 epoch, 3.23s
+  LOCO(27折):learned Q = 149.5798 ± 0.0829 kJ/mol, Δmean=-0.4202 (-0.280%), 50.5s
+
+--- Q_init = 200.0 kJ/mol ---
+  全量拟合(81样本):learned Q = 199.5766 kJ/mol, Δ=-0.4234 (-0.212%), epoch0 grad=0.00543122, epoch0 |step|=0.00100708, 跑了 322 epoch, 1.81s
+  LOCO(27折):learned Q = 199.6171 ± 0.0545 kJ/mol, Δmean=-0.3829 (-0.191%), 46.0s
+
+--- Q_init = 250.0 kJ/mol ---
+  全量拟合(81样本):learned Q = 250.2135 kJ/mol, Δ=+0.2135 (+0.085%), epoch0 grad=0.00806872, epoch0 |step|=0.00100708, 跑了 297 epoch, 1.69s
+  LOCO(27折):learned Q = 250.1402 ± 0.1110 kJ/mol, Δmean=+0.1402 (+0.056%), 49.2s
+
+======================================================================
+汇总:
+ Q_init  learned_Q_full_fit  delta_full_fit  pct_shift_full_fit  n_epochs_ran  grad_epoch0  step_epoch0  fit_time_s  learned_Q_loco_mean  learned_Q_loco_std  delta_loco_mean  pct_shift_loco_mean  loco_time_s
+  150.0          149.524338       -0.475662           -0.317108           363     0.002794     0.001007    3.232627           149.579844            0.082912        -0.420156            -0.280104    50.525075
+  200.0          199.576584       -0.423416           -0.211708           322     0.005431     0.001007    1.807001           199.617097            0.054514        -0.382903            -0.191451    46.012427
+  250.0          250.213501        0.213501            0.085400           297     0.008069     0.001007    1.691550           250.140242            0.110975         0.140242             0.056097    49.248714
+
+三个初始值 LOCO learned-Q 均值两两最大差 = 100.5604 kJ/mol(阈值 <15 判定可识别)
+相对自身初始值最大位移 = 0.2801%(阈值 <5% 判定不可识别)
+
+判定:NOT_IDENTIFIABLE
+
+已写出 data/interim/q_identifiability_summary.csv、data/interim/q_identifiability_per_fold.csv、data/interim/q_identifiability_verdict.txt

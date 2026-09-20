@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nfm-sintering-memory"
+version = "0.2.0"
+description = "NFM 反应烧结形貌记忆:热暴露调控的跨尺度传递与受约束建模"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]

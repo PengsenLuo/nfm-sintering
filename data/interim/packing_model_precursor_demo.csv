@@ -1,0 +1,12 @@
+item,value
+d50_auth_S_um,3.67
+d50_auth_M_um,9.7
+d50_auth_L_um,12.4
+d50_local_S_um,3.231385542168675
+d50_local_M_um,8.546408839779005
+d50_local_L_um,10.96107653490328
+f_small_blend_ratio_M,0.3
+furnas_pred_phi_D50_2class,0.7917998964981887
+lpm_pred_phi_D50_2class,0.7474281465301682
+lpm_pred_phi_full_psd_mechanical_mix,0.781337149679056
+lpm_pred_phi_M_actual_full_psd,0.7931907234192394

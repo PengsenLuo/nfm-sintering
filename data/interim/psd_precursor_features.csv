@@ -1,0 +1,4 @@
+B_bimodal,peak1_um,peak2_um,w_small,separation,bimodal_r2,n_modes,mode_positions_um,note,precursor
+,3.55,,,,,1,[3.55],unimodal_by_modecount,S
+1.617830177736998,3.21442659106309,10.746776869942478,0.3311576092069841,2.4426891195572717,0.9999643703180866,2,"[3.12, 11.2]",ok,M
+,11.2,,,,,1,[11.2],unimodal_by_modecount,L

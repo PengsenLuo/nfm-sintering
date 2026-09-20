@@ -1,0 +1,28 @@
+﻿section,precursor,theta_tercile,n,mean_or_estimate,std_or_se,cv_mean,cv_median,term,pvalue,r_squared,note
+1_lbar_group_stats,L,low,9,0.4479604847774967,0.05300892543556578,0.07414427101037023,0.0442451110933495,,,,"Theta三分位边界(全局qcut): [4.054, 9.469, 21.422, 47.337]"
+1_lbar_group_stats,L,mid,9,0.5055184345421392,0.09898522567643252,0.09845731785231703,0.0805593244742771,,,,"Theta三分位边界(全局qcut): [4.054, 9.469, 21.422, 47.337]"
+1_lbar_group_stats,L,high,9,0.9805045888160543,0.45797892180153543,0.16265604585103566,0.1714991174110181,,,,"Theta三分位边界(全局qcut): [4.054, 9.469, 21.422, 47.337]"
+1_lbar_group_stats,M,low,9,0.45034187974103557,0.04093050296835242,0.07322023057925393,0.0640918880419225,,,,"Theta三分位边界(全局qcut): [4.054, 9.469, 21.422, 47.337]"
+1_lbar_group_stats,M,mid,9,0.5125477122832581,0.05756646440282063,0.0801741641595373,0.0549132921782463,,,,"Theta三分位边界(全局qcut): [4.054, 9.469, 21.422, 47.337]"
+1_lbar_group_stats,M,high,9,0.9028307161736717,0.2983804158165983,0.14626733502507838,0.1276703730458042,,,,"Theta三分位边界(全局qcut): [4.054, 9.469, 21.422, 47.337]"
+1_lbar_group_stats,S,low,9,0.6709925663241973,0.06605998568033006,0.09573667357285257,0.0891108929716891,,,,"Theta三分位边界(全局qcut): [4.054, 9.469, 21.422, 47.337]"
+1_lbar_group_stats,S,mid,9,0.66117744867295,0.05257022212801564,0.11702213735134931,0.1228513712638256,,,,"Theta三分位边界(全局qcut): [4.054, 9.469, 21.422, 47.337]"
+1_lbar_group_stats,S,high,9,0.8696672415447257,0.1825571471848507,0.12254070596638322,0.1139163716799575,,,,"Theta三分位边界(全局qcut): [4.054, 9.469, 21.422, 47.337]"
+1_lbar_group_stats_check,L,low,9,,,0.07414427101037023,0.0442451110933495,cv_L_low_vs_overall_mean,,,L组低Theta端cv均值=0.0741 vs 全体cv均值=0.1078；更小
+2_ols_main_effects,,,81,0.2330008176931336,0.09834060913838924,,,Intercept,0.020326506386248118,0.31899875043051085,Lbar_um ~ precursor(S为基线) + lnTheta，主效应模型，仅方向性论证
+2_ols_main_effects,,,81,-0.11203898278130282,0.06224207328312049,,,"C(precursor, Treatment('S'))[T.M]",0.07576909245745236,0.31899875043051085,Lbar_um ~ precursor(S为基线) + lnTheta，主效应模型，仅方向性论证
+2_ols_main_effects,,,81,-0.08928458280206085,0.06224207328312044,,,"C(precursor, Treatment('S'))[T.L]",0.15548631707009894,0.31899875043051085,Lbar_um ~ precursor(S为基线) + lnTheta，主效应模型，仅方向性论证
+2_ols_main_effects,,,81,0.1882521577543536,0.033048176123229196,,,lnTheta,2.135573212605795e-07,0.31899875043051085,Lbar_um ~ precursor(S为基线) + lnTheta，主效应模型，仅方向性论证
+2b_ols_interaction,,,81,0.4873085880315586,0.15592301008750864,,,Intercept,0.002526213529055371,0.35849708450847184,Lbar_um ~ precursor(S为基线) * lnTheta，交互模型（各前驱体独立lnTheta斜率），仅方向性论证
+2b_ols_interaction,,,81,-0.4360116008116312,0.22050843555179178,,,"C(precursor, Treatment('S'))[T.M]",0.05168279118233441,0.35849708450847184,Lbar_um ~ precursor(S为基线) * lnTheta，交互模型（各前驱体独立lnTheta斜率），仅方向性论证
+2b_ols_interaction,,,81,-0.5282352757870076,0.22050843555179142,,,"C(precursor, Treatment('S'))[T.L]",0.019091484185774502,0.35849708450847184,Lbar_um ~ precursor(S为基线) * lnTheta，交互模型（各前驱体独立lnTheta斜率），仅方向性论证
+2b_ols_interaction,,,81,0.09268479454928143,0.056292199423386244,,,lnTheta,0.10384629878541031,0.35849708450847184,Lbar_um ~ precursor(S为基线) * lnTheta，交互模型（各前驱体独立lnTheta斜率），仅方向性论证
+2b_ols_interaction,,,81,0.12174700291147333,0.07960919188036372,,,"C(precursor, Treatment('S'))[T.M]:lnTheta",0.1303949799948097,0.35849708450847184,Lbar_um ~ precursor(S为基线) * lnTheta，交互模型（各前驱体独立lnTheta斜率），仅方向性论证
+2b_ols_interaction,,,81,0.1649550867037432,0.07960919188036372,,,"C(precursor, Treatment('S'))[T.L]:lnTheta",0.041697724267970325,0.35849708450847184,Lbar_um ~ precursor(S为基线) * lnTheta，交互模型（各前驱体独立lnTheta斜率），仅方向性论证
+4_logit_missing_old,,,81,7.1096054689243005,1.8402126326623467,,,Intercept,0.00011178783447671377,0.2993959662792879,is_missing_old(=primary_segmentable==False) ~ precursor + lnTheta；仅描述旧标签失败模式，不作为记忆保留假说的证据。D_pri_sem 缺失=62，primary_segmentable==False=62，两者不一致的行数=0（0 表示完全对应）。
+4_logit_missing_old,,,81,1.1410128227862095,0.7824198579814692,,,"C(precursor, Treatment('S'))[T.M]",0.14475436869761082,0.2993959662792879,is_missing_old(=primary_segmentable==False) ~ precursor + lnTheta；仅描述旧标签失败模式，不作为记忆保留假说的证据。D_pri_sem 缺失=62，primary_segmentable==False=62，两者不一致的行数=0（0 表示完全对应）。
+4_logit_missing_old,,,81,1.1410128227862089,0.782419857981469,,,"C(precursor, Treatment('S'))[T.L]",0.14475436869761102,0.2993959662792879,is_missing_old(=primary_segmentable==False) ~ precursor + lnTheta；仅描述旧标签失败模式，不作为记忆保留假说的证据。D_pri_sem 缺失=62，primary_segmentable==False=62，两者不一致的行数=0（0 表示完全对应）。
+4_logit_missing_old,,,81,-2.2475141789975304,0.5895758390638972,,,lnTheta,0.00013779855495467817,0.2993959662792879,is_missing_old(=primary_segmentable==False) ~ precursor + lnTheta；仅描述旧标签失败模式，不作为记忆保留假说的证据。D_pri_sem 缺失=62，primary_segmentable==False=62，两者不一致的行数=0（0 表示完全对应）。
+4_crosstab_descriptive,S,,27,0.6666666666666666,,,,missing_fraction,,,旧标签按前驱体的缺失比例，纯描述性
+4_crosstab_descriptive,M,,27,0.8148148148148148,,,,missing_fraction,,,旧标签按前驱体的缺失比例，纯描述性
+4_crosstab_descriptive,L,,27,0.8148148148148148,,,,missing_fraction,,,旧标签按前驱体的缺失比例，纯描述性

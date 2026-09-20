@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the associated paper (see below)."
+title: "NFM Sintering PINN: analysis code and data"
+type: software
+authors:
+  - given-names: Pengsen
+    family-names: Luo
+  - given-names: Yunlong
+    family-names: Zhang
+  - given-names: Zhan
+    family-names: Shen
+  - given-names: Chengan
+    family-names: Liao
+  - given-names: Zi-Feng
+    family-names: Ma
+license: MIT
+preferred-citation:
+  type: article
+  title: "Hierarchical Design and Manufacturing of Sodium-Ion Layered Oxide Cathode Powders via Scale-Selective Control of Precursor Architecture and Thermal History"
+  authors:
+    - given-names: Pengsen
+      family-names: Luo
+    - given-names: Yunlong
+      family-names: Zhang
+    - given-names: Zhan
+      family-names: Shen
+    - given-names: Chengan
+      family-names: Liao
+    - given-names: Zi-Feng
+      family-names: Ma
+  # TODO (author to fill in before / upon publication):
+  #   - journal name
+  #   - year, volume, issue, page range
+  #   - doi

@@ -1,0 +1,48 @@
+======================================================================
+硬性验收线(ln(Theta)+Theta+precursor one-hot Ridge, 同一批 LOCO 折):
+  R2=0.5025  MAE=8.782nm  n_eval=51  n_folds=17
+  硬目标:R2 >= 0.49  且  MAE <= 8.8nm
+======================================================================
+
+--- 现状对照:共享主干(7 target,任务4原配置)---
+  [shared_trunk_7target(baseline_arch)] R2=-6.4600  MAE=37.325nm  n_eval=51  50.8s  fail
+
+--- 2a: D_XRD 独立主干(默认超参 n=3, arrhenius weight=0.5)---
+  [solo_trunk_default(n=3,w=0.5)] R2=-3.8972  MAE=30.004nm  n_eval=51  38.5s  fail
+
+--- 2b: 独立主干上网格扫描 growth_exponent_n x weight.arrhenius ---
+  [solo_trunk(n=2,w_arr=0)] R2=+0.1998  MAE=10.494nm  n_eval=51  53.3s  fail
+  [solo_trunk(n=2,w_arr=0.05)] R2=-0.9578  MAE=17.124nm  n_eval=51  149.7s  fail
+  [solo_trunk(n=2,w_arr=0.1)] R2=-1.4614  MAE=17.541nm  n_eval=51  152.7s  fail
+  [solo_trunk(n=2,w_arr=0.5)] R2=-1.6899  MAE=18.015nm  n_eval=51  46.5s  fail
+  [solo_trunk(n=3,w_arr=0)] R2=+0.1998  MAE=10.494nm  n_eval=51  54.0s  fail
+  [solo_trunk(n=3,w_arr=0.05)] R2=-1.0455  MAE=17.214nm  n_eval=51  90.7s  fail
+  [solo_trunk(n=3,w_arr=0.1)] R2=-1.4378  MAE=18.318nm  n_eval=51  62.7s  fail
+  [solo_trunk(n=3,w_arr=0.5)] R2=-3.8972  MAE=30.004nm  n_eval=51  39.3s  fail
+  [solo_trunk(n=4,w_arr=0)] R2=+0.1998  MAE=10.494nm  n_eval=51  54.1s  fail
+  [solo_trunk(n=4,w_arr=0.05)] R2=-1.5627  MAE=18.754nm  n_eval=51  53.5s  fail
+  [solo_trunk(n=4,w_arr=0.1)] R2=-2.7070  MAE=23.745nm  n_eval=51  41.1s  fail
+  [solo_trunk(n=4,w_arr=0.5)] R2=-6.7676  MAE=37.106nm  n_eval=51  36.9s  fail
+
+======================================================================
+完整网格结果(按 R2 降序):
+                              label        R2       MAE  n_eval     time_s  passed  baseline_R2  baseline_MAE
+            solo_trunk(n=2,w_arr=0)  0.199792 10.493876      51  53.316535   False     0.502527      8.781812
+            solo_trunk(n=3,w_arr=0)  0.199792 10.493876      51  54.034154   False     0.502527      8.781812
+            solo_trunk(n=4,w_arr=0)  0.199792 10.493876      51  54.095417   False     0.502527      8.781812
+         solo_trunk(n=2,w_arr=0.05) -0.957830 17.123877      51 149.681650   False     0.502527      8.781812
+         solo_trunk(n=3,w_arr=0.05) -1.045508 17.213828      51  90.703484   False     0.502527      8.781812
+          solo_trunk(n=3,w_arr=0.1) -1.437758 18.317795      51  62.715183   False     0.502527      8.781812
+          solo_trunk(n=2,w_arr=0.1) -1.461370 17.541213      51 152.674053   False     0.502527      8.781812
+         solo_trunk(n=4,w_arr=0.05) -1.562688 18.754025      51  53.544469   False     0.502527      8.781812
+          solo_trunk(n=2,w_arr=0.5) -1.689903 18.014684      51  46.497010   False     0.502527      8.781812
+          solo_trunk(n=4,w_arr=0.1) -2.707028 23.745490      51  41.144634   False     0.502527      8.781812
+          solo_trunk(n=3,w_arr=0.5) -3.897201 30.004310      51  39.295436   False     0.502527      8.781812
+      solo_trunk_default(n=3,w=0.5) -3.897201 30.004310      51  38.471484   False     0.502527      8.781812
+shared_trunk_7target(baseline_arch) -6.460046 37.324548      51  50.840331   False     0.502527      8.781812
+          solo_trunk(n=4,w_arr=0.5) -6.767628 37.106318      51  36.916417   False     0.502527      8.781812
+
+======================================================================
+结论:没有任何配置达标。D_XRD 在本数据集/本架构范围内无法追平基线。
+
+已写出 data/interim/dxrd_fix_grid.csv

@@ -1,0 +1,37 @@
+
+======================================================================
+任务4:LOCO(27折)—— view_pinn_full 全部 7 个 target,共享主干 PINN
+======================================================================
+样本数(X 齐全):81/81;target:['D_XRD', 'lattice_c', 'c_a_ratio', 'D_sec', 'circularity', 'convexity', 'compaction_density']
+LOCO 27 折完成,用时 64.2s
+
+结构层(物理约束已启用:D_XRD 受 arrhenius+mono,lattice_c/c_a_ratio 仅 bounds):
+   target        R2      MAE  n_eval
+    D_XRD  0.386578 9.765961      51
+lattice_c -0.009351 0.007279      51
+c_a_ratio -0.276871 0.004579      51
+
+形貌/堆积层(未获约束,仅 bounds 兜底;circularity/convexity/compaction_density 明确排除 mono):
+            target       R2      MAE  n_eval
+             D_sec 0.893730 0.723446      81
+       circularity 0.842883 0.042649      81
+         convexity 0.731283 0.018270      81
+compaction_density 0.666771 0.059346      81
+
+learned Q(27 折均值±std)= 199.6198 ± 0.0800 kJ/mol(初始化 Q_init=200.0,|Δ|=0.3802)
+是否落在文献范围 180–220 kJ/mol:True
+
+======================================================================
+任务5:compaction_density 三模型 LOCO 对照
+======================================================================
+(c) PINN(全特征+按目标分派物理约束,共享主干) R2=0.667 MAE=0.0593
+(b) 全特征 MLP(同架构,物理权重清零) R2=0.673 MAE=0.0584  (用时 22.1s)
+(a) Θ-only(+前驱体 one-hot)线性基线 R2=0.639 MAE=0.0622
+
+三模型对照汇总:
+                             model       R2      MAE
+(a) Theta-only + precursor one-hot 0.638803 0.062188
+ (b) full-feature MLP, physics off 0.672509 0.058442
+ (c) full-feature PINN, physics on 0.666771 0.059346
+
+已写出 data/interim/pinn_loco_summary.csv、data/interim/pinn_task5_compaction_density_comparison.csv

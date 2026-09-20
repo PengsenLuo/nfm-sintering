@@ -1,0 +1,18 @@
+======================================================================
+任务3:全部7个 target 的平价基线对照表
+PINN 配置:config.yaml.training.pinn(任务2定稿:arrhenius weight=0)
+======================================================================
+
+            target  baseline_R2  baseline_MAE  baseline_n_folds   PINN_R2  PINN_MAE  PINN_n_eval  beats_baseline
+             D_XRD     0.502527      8.781812                17  0.386578  9.765961           51           False
+         lattice_c     0.133342      0.006937                17 -0.009351  0.007279           51           False
+         c_a_ratio    -0.175102      0.004345                17 -0.276871  0.004579           51           False
+             D_sec     0.919437      0.610812                27  0.893730  0.723446           81           False
+       circularity     0.839224      0.042600                27  0.842883  0.042649           81           False
+         convexity     0.745725      0.017778                27  0.731283  0.018270           81           False
+compaction_density     0.631900      0.062721                27  0.666771  0.059346           81            True
+
+======================================================================
+PINN 未跑赢基线的 target(6/7): D_XRD, lattice_c, c_a_ratio, D_sec, circularity, convexity
+
+已写出 data/interim/target_baseline_comparison.csv

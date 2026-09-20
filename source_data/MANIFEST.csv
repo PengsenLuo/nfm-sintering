@@ -1,0 +1,43 @@
+﻿file,group,figure,panel,content,rows,columns,bytes,sha256,repository_file
+SourceData_Fig1a.csv,main text,Fig. 1,(a),Laser-diffraction volume distributions of the three precursors,300,4,5055,33de5b390f47714ef736da116d34738a4e484afe5d85d89d1c9df0b7faa809b7,fig1_b_precursor_psd.csv
+SourceData_Fig1b.csv,main text,Fig. 1,(b),Factorial design matrix and XRD coverage flag,27,5,702,3470a0d39f6b12cffa66a1c24e8e3805ba4299e1f687c5d4c519f01493090353,fig1_a_design_matrix.csv
+SourceData_Fig2a.csv,main text,Fig. 2,(a),Main-effect variance fractions for nine responses,54,4,2311,f7f7bf5fe5cacbf66113ccbf641219115559acaa5741f58b71682e1314bc81a1,fig2_a_variance_decomposition.csv
+SourceData_Fig2b.csv,main text,Fig. 2,(b),Summed architecture-thermal coupling for five core responses,10,3,300,be1dea32c5b39239a8a5c39859c5180f02372c8d8a632178742924b0fe793a9b,fig2_b_coupling_total.csv
+SourceData_Fig3a.csv,main text,Fig. 3,(a),"Powder compacted density, 27 same-furnace triplets",81,6,3131,00e8ab077cf577099fe7b9d8ad097caa2282dc0f7681f7e26c9e1f611f899629,fig3_a_compaction_density_paired_by_condition.csv
+SourceData_Fig3b.csv,main text,Fig. 3,(b),"Secondary-particle size Dsec, 27 same-furnace triplets",81,6,4198,7d6885ef31c98d40af5b4e4b575af1927d811e3d51225b4bc60c81bc161a3f65,fig3_b_D_sec_paired_by_condition.csv
+SourceData_Fig3c.csv,main text,Fig. 3,(c),Paired M-L differences: Hodges-Lehmann estimates and Walsh-average intervals,5,16,599,445d7b9928cbe68ff90747b94daa33aadc30304795309b0d4d0b5026208cdec9,fig3_c_MvsL_forest.csv
+SourceData_Fig4a-1.csv,main text,Fig. 4,(a),Observed FWHM of (003) and (104) aggregated over 17 conditions,34,10,2069,f95841336279d69e07abb9c7689429ba9e8f69693007608212547ddd071bcee4,fig4_a_fwhm_by_condition.csv
+SourceData_Fig4a-2.csv,main text,Fig. 4,(a),"Observed and instrumental FWHM, 51 samples x 2 reflections",102,9,5130,f5d0e5d9e77c78038eebb2aabc3a7810dccbe91dc4b6128fc4b0787a2c43b46f,fig4_a_fwhm_per_sample.csv
+SourceData_Fig4a-3.csv,main text,Fig. 4,(a),"Native-step diffraction profiles, centroid aligned, no smoothing",810,8,34174,fb336d06f1afe89897ad4bfe0b441c17281d6199587fe1252af92c66dfb6e9a4,fig4_a_peaks_native.csv
+SourceData_Fig4b-1.csv,main text,Fig. 4,(b),"Apparent coherent-domain size versus thermal exposure, 51 samples",51,6,2810,76b3b0fca1280bbdf80462efd7568a015e15e94e0e8b22aae09fd02ad751b08a,fig4_b_DXRD_vs_theta.csv
+SourceData_Fig4b-2.csv,main text,Fig. 4,(b),"Pooled log-linear guide, endpoints only",2,2,40,77f068537c258d4a6d2d222c6a63cea1f172960e6d0a47421a50bf8643f940d8,fig4_b_trendline.csv
+SourceData_Fig4c-1.csv,main text,Fig. 4,(c),"Lattice parameter c versus thermal exposure, 51 samples",51,6,2845,40bc7cd5f56b5bbca5498e1f80885c9d24f103ff86dab23f641899bdfd0ec32c,fig4_c_lattice_c_vs_theta.csv
+SourceData_Fig4c-2.csv,main text,Fig. 4,(c),"Pooled log-linear guide, endpoints only",2,2,44,62272a26148000d9372b261a785702976d217acc22566ba9130c2f4da43b92dc,fig4_c_trendline.csv
+SourceData_Fig4d.csv,main text,Fig. 4,(d),"Apparent free-surface line intercept, 81 samples",81,7,6917,d6b1a54ae1a6d29039b90b2b28eda3f38c6274f5a6d998530ddd07d71deab19e,fig4_d_Lapp_vs_theta.csv
+SourceData_Fig4bcd.csv,main text,Fig. 4,(b)(c)(d),Architecture-resolved Spearman correlations with bootstrap intervals,9,9,480,6116fb8648faef56bfc87fdd8e6700a7b9a39fb7f1431ea96824a5b5c7d25f44,fig4_bcd_spearman.csv
+,main text,Fig. 5,(a),"EXCLUDED FROM THIS RELEASE -- known inconsistency: this manifest listed 18 candidate 500x source files, but the published panel appears to use 2000x images (6 files); not resolved in the source repository at packaging time, see README.txt",,,,,PENDING CORRECTION BY AUTHOR
+SourceData_Fig5b-1.csv,main text,Fig. 5,(b),Morphology-response fingerprint: Spearman rho and 95% CI,12,8,578,3bfcd7e0331cdc29b66f6d857816226b7761c462965c051ab6ac1899997c00cf,fig5_b_forest_matrix.csv
+SourceData_Fig5b-2.csv,main text,Fig. 5,(b),"Architecture-response heterogeneity, label-permutation p",4,4,150,a5144b092c885d739ddebf3a576c3285e94810b05bfba430a596e6d3d7157db9,fig5_b_heterogeneity_perm.csv
+SourceData_Fig5c.csv,main text,Fig. 5,(c),Same-furnace L-S and M-S contrasts in Dsec,27,7,1265,3239f22555d1cea867661aaab3c49435fb55dc911cadc555ee170c7daf91900a,fig5_c_dsec_contrast.csv
+SourceData_FigS1-1.csv,supplementary,Figure S1,,"Design-range sensitivity, panel a",65,5,3318,1381f8fcaf09d91f68fc514cf51d7a04b479bfee2d27898d3502fbc55fb7c16c,figS1_variance_range_sensitivity_a.csv
+SourceData_FigS1-2.csv,supplementary,Figure S1,,"Design-range sensitivity, panel b",65,5,3324,439478b45326470ebf4902ad9d4475dd97d56a9dee5a9e86a83ba76fbec2a72d,figS1_variance_range_sensitivity_b.csv
+SourceData_FigS1-3.csv,supplementary,Figure S1,,"Design-range sensitivity, panel c",65,5,3329,38064d50744fb919142373e1e4526fe2dfc46a48681cee3730de8deb991c1974,figS1_variance_range_sensitivity_c.csv
+SourceData_FigS1-4.csv,supplementary,Figure S1,,"Design-range sensitivity, panel d",65,5,3324,6d5b8f188712b54e36d37bedc3feaad40e3fe2cf474fb9729e5d9cf3a07354ca,figS1_variance_range_sensitivity_d.csv
+SourceData_FigS2.csv,supplementary,Figure S2,,"Gaussian versus Lorentzian deconvolution, 51 paired samples",51,5,2627,5e4bb46a5fc1e6376a2dd873bbf53c479a2910a23ed89290f22d7f0eef8cccc2,figS2_deconvolution_sensitivity.csv
+SourceData_FigS3-1.csv,supplementary,Figure S3,,Fitted zero-point term versus thermal exposure,51,5,2602,ccf52d61c13f4cecf34e5155f4cfaa59194bbb65fb0f71e054a7f05f84e80f71,figS3_zero_offset_diagnostic_a.csv
+SourceData_FigS3-2.csv,supplementary,Figure S3,,Per-reflection residuals versus cos(theta),510,6,28319,4ad974066e18f21e2a7193246d35c2c40817c9a870eb28f62c41be6499ecb21e,figS3_zero_offset_diagnostic_b.csv
+SourceData_FigS4-1.csv,supplementary,Figure S4,,Paired D(003) versus D(104),51,5,2498,fb84aa21c58cd5f63a425449f110b736b25c96aab1c04ecf7045d628bf72ad6b,figS4_d003_d104_anisotropy_a.csv
+SourceData_FigS4-2.csv,supplementary,Figure S4,,Ratio D(104)/D(003) versus thermal exposure,51,5,2544,456371942d32730d2311f167d521058aa1526813d059ae071596538a06d90cb5,figS4_d003_d104_anisotropy_b.csv
+SourceData_FigS4-3.csv,supplementary,Figure S4,,Ratio D(104)/D(003) versus sintering temperature,51,5,1924,bd09bb70dbd46980452c6160b12b4dacbdaaa80fcf2ebc7d2d394a94e38da4a6,figS4_d003_d104_anisotropy_c.csv
+SourceData_FigS5-1.csv,supplementary,Figure S5,,Qref sensitivity sweep,14,4,733,59a8a4b5b5ab7a30d8079700e0289d81fda2313f60a8b293f07142d62b1fddd0,figS5_qref_and_arrhenius_a.csv
+SourceData_FigS5-2.csv,supplementary,Figure S5,,"Auxiliary Arrhenius fit, fixed holding time",51,6,2837,23799f3ca4808ffb08db4fdf968ba878b12b06f0c28d837ce2d16fdad2d173e4,figS5_qref_and_arrhenius_b.csv
+SourceData_FigS6-1.csv,supplementary,Figure S6,,Lattice parameter a versus thermal exposure,51,6,2823,a747b323ecae88b1eb950f8a984084aee9a9f06d04a5a9ddea0923b8b8539852,figS9_lattice_vs_theta_a.csv
+SourceData_FigS6-2.csv,supplementary,Figure S6,,Lattice parameter c versus thermal exposure,51,6,2845,40bc7cd5f56b5bbca5498e1f80885c9d24f103ff86dab23f641899bdfd0ec32c,figS9_lattice_vs_theta_b.csv
+SourceData_FigS6-3.csv,supplementary,Figure S6,,Ratio c/a versus thermal exposure,51,6,2819,fc4e43ef1a5e7da6ef570ca27bbb1e1cab087114120970ef13b407cc1bbd7b40,figS9_lattice_vs_theta_c.csv
+SourceData_FigS7.csv,supplementary,Figure S7,,Segmentation diagnostics across parameter sets and algorithm families,6,7,470,e6e82f31cbbf15ba89e2b1dd1697270abdba607b2da450d806ec7ce4839c908b,figS6_segmentation_sensitivity.csv
+SourceData_FigS8-1.csv,supplementary,Figure S8,,"Per-particle regression R2, summary by architecture",4,9,609,3d4fd54c89f08ad956d982c2cd14bb9a30de7d9cbd10e975c8c53968f6e70880,figS7_df_r2_distribution_a.csv
+SourceData_FigS8-2.csv,supplementary,Figure S8,,"Per-particle regression R2, all 40413 valid contours",40413,3,1084702,d60b4f974057ec9c1fb11e9ec868863a89cfaecc5bc7c0d051c0ec8a8a4f201b,figS7_df_r2_distribution_b.csv
+,main text,Fig. 6,(a),"First-cycle galvanostatic profiles at 0.1C, C07-S/M/L",,,,,TO BE SUPPLIED
+,main text,Fig. 6,(b),"Cycling capacity and Coulombic efficiency at 1C, 100 cycles",,,,,TO BE SUPPLIED
+,main text,Fig. 6,(c),"Rate capability at 0.5, 1, 2, 5, 10C and recovery at 0.5C",,,,,TO BE SUPPLIED
+,main text,Fig. 6,(d),Initial discharge capacity versus powder compacted density,,,,,TO BE SUPPLIED

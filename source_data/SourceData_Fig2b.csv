@@ -1,0 +1,11 @@
+﻿target,metric,value_pct
+D_XRD,total_eta2,1.68
+lattice_c,total_eta2,1.03
+compaction_density,total_eta2,3.2
+D_sec,total_eta2,0.63
+circularity,total_eta2,2.79
+D_XRD,total_omega2,0.0
+lattice_c,total_omega2,0.0
+compaction_density,total_omega2,1.02
+D_sec,total_omega2,0.11
+circularity,total_omega2,1.76

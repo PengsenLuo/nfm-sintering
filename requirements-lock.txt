@@ -1,0 +1,33 @@
+# Exact versions used to produce the numbers reported in the paper.
+# Captured from the `nfm` conda environment (Python 3.11.15, Windows) on 2026-09-20.
+#
+# requirements.txt gives loose lower bounds (an installation constraint);
+# this file is the actual environment the analysis was run and verified in.
+# `pytest tests/ -v` passes 130/130 against this exact set (including
+# test_pinn_physics.py, torch/numpy interop verified working here).
+#
+# torch/torchvision below are the CUDA 12.1 wheels used on the original
+# machine (GPU-accelerated SAM segmentation). On a CPU-only machine, install
+# the CPU build instead, e.g.:
+#   pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu
+# SAM-based segmentation is an optional dependency (see README); the core
+# processing/analysis pipeline and test suite do not require a GPU.
+
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.1
+scikit-image==0.26.0
+scikit-learn==1.9.0
+xgboost==3.2.0
+torch==2.5.1+cu121
+torchvision==0.20.1+cu121
+segment-anything==1.0
+opencv-python-headless==5.0.0.93
+shap==0.51.0
+SALib==1.5.2
+statsmodels==0.14.6
+PyYAML==6.0.3
+matplotlib==3.11.0
+tifffile==2026.3.3
+patsy==1.0.2
+pytest==9.1.1

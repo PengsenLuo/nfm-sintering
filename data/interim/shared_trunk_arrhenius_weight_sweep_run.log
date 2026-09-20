@@ -1,0 +1,9 @@
+======================================================================
+共享主干(7 target)上的 arrhenius 权重扫描
+======================================================================
+  w_arr=0     D_XRD R2=+0.3866 MAE=9.766  compaction_density R2=0.6668  circularity R2=0.8429  convexity R2=0.7313  D_sec R2=0.8937  (96.7s)
+  w_arr=0.05  D_XRD R2=-4.1629 MAE=30.869  compaction_density R2=0.6570  circularity R2=0.8428  convexity R2=0.7195  D_sec R2=0.9168  (58.4s)
+  w_arr=0.1   D_XRD R2=-5.0050 MAE=34.029  compaction_density R2=0.6475  circularity R2=0.8170  convexity R2=0.6637  D_sec R2=0.9014  (45.0s)
+  w_arr=0.5   D_XRD R2=-6.4600 MAE=37.325  compaction_density R2=0.6148  circularity R2=0.7272  convexity R2=0.4965  D_sec R2=0.8710  (44.5s)
+
+已写出 data/interim/shared_trunk_arrhenius_weight_sweep.csv

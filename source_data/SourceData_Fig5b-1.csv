@@ -1,0 +1,13 @@
+﻿row_order,descriptor,precursor,n,spearman_rho,ci_lo,ci_hi,ci_excludes_zero
+1,roughness,S,27,0.676,0.393,0.812,True
+1,roughness,M,27,0.562,0.235,0.768,True
+1,roughness,L,27,0.534,0.147,0.793,True
+2,"D_f,app",S,27,0.689,0.38,0.871,True
+2,"D_f,app",M,27,-0.007,-0.391,0.387,False
+2,"D_f,app",L,27,0.173,-0.281,0.585,False
+3,solidity,S,27,-0.693,-0.838,-0.388,True
+3,solidity,M,27,-0.148,-0.534,0.293,False
+3,solidity,L,27,-0.399,-0.718,0.03,False
+4,elongation,S,27,-0.489,-0.759,-0.148,True
+4,elongation,M,27,-0.017,-0.378,0.337,False
+4,elongation,L,27,0.256,-0.143,0.601,False

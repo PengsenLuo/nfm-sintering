@@ -1,0 +1,3 @@
+verdict=NOT_IDENTIFIABLE
+max_pairwise_diff_kJmol=100.5604
+max_pct_shift=0.2801

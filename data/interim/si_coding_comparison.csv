@@ -1,0 +1,10 @@
+﻿target,coding,loco_r2,loco_mae,n_folds,n
+D_sec,ref_S,0.9132,0.6688,27,81
+D_sec,dummy3,0.9214,0.6078,27,81
+D_sec,sum,0.9225,0.598,27,81
+compaction_density,ref_S,0.6312,0.063,27,81
+compaction_density,dummy3,0.6372,0.0619,27,81
+compaction_density,sum,0.6379,0.0615,27,81
+D_XRD,ref_S,0.4643,10.7504,27,78
+D_XRD,dummy3,0.4638,10.7449,27,78
+D_XRD,sum,0.4636,10.7429,27,78

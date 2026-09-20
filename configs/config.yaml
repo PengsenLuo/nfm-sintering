@@ -1,0 +1,179 @@
+# ============================================================
+# config.yaml —— NFM 反应烧结形貌记忆建模 (v0.2)
+# 改一处,全链路一致;列定义见 src/nfm/schema.py
+# ============================================================
+
+physical_constants:
+  R_J_per_molK: 8.314
+  Q_ref_kJmol: 200            # 特征坐标用的固定参考活化能(与 PINN 可学习 Q 解耦)
+  T_ref_C: 900                # 热暴露量参考温度(设计中点)
+
+design:
+  n_conditions: 27
+  precursors: [S, M, L]
+  factors:
+    T_C:   [850, 900, 950]
+    beta:  [2, 5, 8]
+    t_hold: [10, 15, 20]
+  precalcination: {T_C: 550, t_h: 5}   # 所有样本一致,Θ 积分参考段
+  na_excess_pct: 2.5
+  precursor_desc:                       # D50 权威来源见 instruments.laser_psd.precursor_dvalues_csv(第十轮起)
+    S: {bimodal: 0, blend_ratio: 1.0}
+    M: {bimodal: 1, blend_ratio: 0.3}   # 0.7*大颗粒 + 0.3*小颗粒(配方比例注记,D50 见实测表)
+    L: {bimodal: 0, blend_ratio: 0.0}
+  precursor_B:                          # 前驱体自身双峰特征量(M_B 分母来源,第十一轮任务3b)
+    # 由 scripts/01b_process_psd_precursors.py 对 data/raw/psd/precursors/*.csv
+    # 跑双峰拟合(与产物同一套算法/阈值,含任务2的原始曲线模式计数一级判据)
+    # 得到,2026-07-20。S/L 留档对比,M_B 只用 M。
+    # S/L 按设计是单峰前驱体,原始曲线一级判据 n_modes=1(note=unimodal_by_modecount),
+    # 未进入混合拟合,B_bimodal=NaN,与"单峰无双峰特征量"的物理直觉一致,故留 null。
+    # M 行 note=ok(真双峰),两峰位置 [3.12, 11.2]µm,与配方大/小颗粒 D50 数量级一致。
+    S: null
+    M: 1.61783
+    L: null
+
+# ---------- 热暴露量 Θ(替代旧 thermal_budget)----------
+thermal_exposure:
+  mode: arrhenius_integral      # Θ = ∫ exp[-Q/R (1/T(τ) - 1/T_ref)] dτ
+  ramp_segment: [550, target]   # 升温段:550℃ → 目标温度
+  integrate_from_C: 550         # 与预烧终温一致(550°C/5h 预烧对所有
+                                # 样本相同),故 Θ 只积分预烧之后的升温段+保温段。
+                                # 原 auto(双端点反推)已弃用。所有 vs Θ 图以此为准。
+  t_eff_mode: arrhenius_ramp    # 中间量 t_eff 的折算方式
+  split_reaction_growth: false  # 可选扩展:分 Θ_reaction / Θ_growth(需 TG-DSC)
+
+instruments:
+  xrd:
+    wavelength_A: 1.540593      # Cu Kα1(峰形 Kα1+Kα2 双线,所有量 Kα1 口径)
+    ka2_wavelength_A: 1.544427
+    ka2_ratio: 0.5
+    scherrer_K: 0.9
+    williamson_hall: true       # 新增:多峰 WH 分离尺寸/微应变
+    wh_peaks: ["003", "006", "101", "104", "015", "110", "113"]
+    # WH 各向同性模型在本批数据上拟合稳定性不足(R2 0.16-0.40),
+    # D_XRD_WH/microstrain_WH 降级为定性参照,不作定量结论;
+    # 此峰列表维持现状不变。
+    caglioti_UVW: [0.007818, -0.006680, 0.007065]  # 03b_fit_caglioti.py 拟合(Si 标样,见 data/interim/caglioti_peaks.csv)
+    # 双仪器校正:
+    # C02/C05/C06/C08/C10/C11/C13/C20/C22/C23(30 样本)换用 Rigaku MiniFlex(仪器2)测试,
+    # 仪器宽化显著大于仪器1 SmartLab,必须用各自的 Caglioti 曲线分别扣除。
+    caglioti_UVW_inst2: [0.015423, -0.019385, 0.012494]  # 03b_fit_caglioti.py 拟合;补测 2°/min 标样(与30个样品扫速完全匹配),取代此前 5°/min 旧标样(见 data/interim/caglioti2_peaks.csv)
+    instrument2_conditions: [C02, C05, C06, C08, C10, C11, C13, C20, C22, C23]  # 仪器2条件清单,只作交叉校验(路由以文件内容 detect_instrument() 为准)
+    resolution_ratio_min: 1.3  # beta_obs/beta_inst 下限;低于此值 D_XRD_reliable=False,D_XRD 置 NaN(阈值取自仪器1最小值1.44与仪器2越界样本1.07/1.25之间)
+    nano_layer_instrument: 1   # 纳米层四列(D_XRD/lattice_a/lattice_c/c_a_ratio)仅用仪器1(51样);跨仪器合并已被证伪(残差中位+4.41 vs -8.61nm,p=1.1e-4),见 nfm.nano_layer.nano_layer_frame
+    hydrate_index_warn_threshold: 2.0  # 水合/残碱相污染质控阈值(%);仅记录,本轮不据此剔除样本或置NaN。
+                                        # 仪器1实测51样最大约1.09%,留一倍余量取2.0%。是否启用剔除待后续
+                                        # 核查结果决定,当前默认不启用。
+  laser_psd:
+    dispersant: anhydrous_ethanol   # 禁水
+    bimodal_fit: true               # 双对数正态混合拟合
+    dvalues_samples_csv: data/raw/psd/samples/psd_dvalues_samples.csv       # D10/D50/D90/Span 正式口径(第十轮起,仪器报告值)
+    precursor_dvalues_csv: data/raw/psd/samples/psd_dvalues_precursors.csv  # 前驱体 D50 权威来源(第十轮起)
+    bimodal_w_small_bounds: [0.05, 0.95]   # w_small 落此区间外→退化单峰,B_bimodal 置 NaN(第十轮任务3)
+    bimodal_modecount:   # 双峰判定一级判据(第十一轮任务2,原始体积密度曲线模式计数)
+      prominence: 0.5    # find_peaks 突起度阈值(%单位);对60真实样本敏感性扫描
+                          # prominence∈[0.2,2.0]结果完全稳定,0.1处出现噪声级假阳性。
+      height: 0.1         # 最小峰高(%单位),滤除接近0的痕量噪声
+  compaction_density:
+    # 实验记录:压力 3 t、模具 13 mm、保压 30 s。
+    # 换算:3t=29.42 kN ÷ π×(6.5mm)² = 132.73 mm² → 221.7 MPa。
+    pressure_MPa: 221.7
+    die_diameter_mm: 13.0
+    dwell_s: 30
+    multi_pressure: false       # 可选扩展:多压力 ρ(P) + Heckel/Kawakita
+  sem:
+    seg:
+      # 500x 二次颗粒分割:形貌自适应 h(已定档)。
+      # 算法与锚点数值不再改动;此处只是把 sem_processor.SegConfig 里已确认的
+      # 值显式落盘,便于日后审计/微调。改这里 = 改全链路默认行为,务必谨慎。
+      sec_adaptive_h: true
+      sec_adaptive_h_percentile: 90.0
+      sec_adaptive_h_x0: 1.6          # µm,锚点 dt_scale(S 型目视校准)
+      sec_adaptive_h_intercept: 0.16  # 锚点处的 h
+      sec_adaptive_h_slope: 0.082     # h 每 µm 的变化率
+      sec_adaptive_h_min: 0.14
+      sec_adaptive_h_max: 0.26
+    sam:
+      # overlay 目视比对确认经典分割存在跨颗粒合并伪迹(蛇形连通斑块),
+      # SAM mask 紧凑逐颗对应真实颗粒;ViT-B 计时实验(pps=16/24 均无OOM,
+      # 单张2.8-5.9s)证实本机(RTX3050 4GB)可行。SAM 取代经典分割成为
+      # D_pri_sem 正式口径,经典分割降级为 D_pri_sem_classic 诊断列。
+      checkpoint: src/nfm/models/sam_vit_b_01ec64.pth
+      model_type: vit_b
+      points_per_side: 16
+
+# ---------- 建模视图(列的组合,不改变本体角色)----------
+views:
+  view_layer1:                  # 工艺+前驱体 → 形貌结构
+    X: [T_C, beta, t_hold, precursor_D50, bimodal, blend_ratio,
+        T_K, inv_T_K, Theta, t_eff]
+    y: [D10, D50, D90, Span, B_bimodal, D_sec, aspect_ratio, circularity,
+        convexity, D_pri_sem, hier_size_ratio, D_XRD, lattice_a, lattice_c, c_a_ratio]
+  view_direct:                  # 工艺+前驱体 → 压实密度(拿精度)
+    X: [T_C, beta, t_hold, precursor_D50, bimodal, blend_ratio,
+        T_K, inv_T_K, Theta, t_eff]
+    y: [compaction_density]
+  view_two_step:                # 形貌结构 → 压实密度(讲机理)
+    X: [D50, Span, circularity, convexity, D_sec, D_pri_sem, B_bimodal]
+    y: [compaction_density]
+  view_pinn_full:                # PINN 共享主干:工艺+前驱体 → 结构层+形貌/堆积层(任务4)
+    X: [T_C, beta, t_hold, precursor_D50, bimodal, blend_ratio,
+        T_K, inv_T_K, Theta, t_eff]
+    y: [D_XRD, lattice_c, c_a_ratio, D_sec, circularity, convexity, compaction_density]
+
+primary_targets: [D50, Span, circularity, compaction_density]
+
+# ---------- 训练 / 验证 ----------
+training:
+  seed: 42
+  cv: loco                      # ★ 主口径:留整条件(27 折);loo 仅辅助
+  external_points:              # 网格外独立工艺点(外部验证),建好后回填实测
+    - {T_C: 875, beta: 5, t_hold: 15}
+    - {T_C: 925, beta: 5, t_hold: 15}
+    - {T_C: 900, beta: 5, t_hold: 12.5}
+    - {T_C: 900, beta: 5, t_hold: 17.5}
+    - {T_C: 875, beta: 8, t_hold: 12.5}
+  baselines:
+    rf:  {n_estimators: 300, max_depth: 6, min_samples_leaf: 3}
+    xgb: {n_estimators: 400, max_depth: 4, learning_rate: 0.05,
+          subsample: 0.8, reg_lambda: 1.0}
+    svr: {kernel: rbf, C: 10.0, epsilon: 0.1}
+  pinn:
+    hidden_dims: [64, 32, 16]
+    dropout: 0.2
+    weight_decay: 1.0e-4
+    lr: 1.0e-3
+    epochs: 1500
+    early_stopping_patience: 50
+    Q_init_kJmol: 200
+    growth_exponent_n: 3.0      # 可固定或离散比较 {3,4};见 evaluation/physics_check
+    warmup_epochs: 200          # 物理约束热身
+    # ★ arrhenius=0(诊断修复定稿):
+    #   在 view_pinn_full 共享主干上扫描 weight.arrhenius in {0,0.05,0.1,0.5} 发现
+    #   任何非零权重都让 D_XRD LOCO 断崖式变差(0→0.05 就从 R²=+0.387 摔到 -4.16),
+    #   且通过共享主干拖累其它未获约束的 target(circularity 0.843→0.727、
+    #   convexity 0.731→0.497、compaction_density 0.667→0.615,权重越大拖累越重)。
+    #   weight=0 在全部 7 个 target 上都不差于甚至优于 weight=0.5,是严格 Pareto
+    #   改进,不是"牺牲 D_XRD 换其它 target"的取舍。growth_exponent_n 在 weight=0
+    #   下不生效,保留原值仅供未来重新打开 Arrhenius 时参考。
+    #   即使如此,D_XRD 仍未追平 ln(Theta)+Theta+precursor one-hot 的 Ridge 基线
+    #   (R²=0.387 vs 0.503,MAE=9.77 vs 8.78nm)——诚实结论:这不是"修复到达标",
+    #   是"移除明确有害的约束",D_XRD 的 PINN 预测目前仍不如简单线性基线。
+    loss_weights: {data: 1.0, arrhenius: 0.0, monotonic: 0.2, bounds: 0.2}
+    physics:                     # 按目标分派物理约束
+      # ★ 硬约束:circularity/convexity/compaction_density 对 Θ 反向或非单调
+      #   (热重构主导),严禁出现在 mono_targets——pinn.py 的
+      #   _resolve_physics_targets 会对此直接报错,不是可静默忽略的配置项。
+      arrhenius_targets: ["D_XRD"]   # 只有 D_XRD 随 Θ 单调不减(rho=+0.82,工艺主导)
+      mono_targets: ["D_XRD"]
+      bounds_targets: all            # 边界铰链对全部 target 安全(不假设方向)
+
+# ---------- 统计(新)----------
+stats:
+  mixed_effects:
+    random_effect: condition_id     # 炉次随机效应
+    fixed: [Theta, precursor]       # 含 Theta×precursor 交互
+  mediation:
+    enabled: true                   # 审慎使用,作支持性证据
+    path: "precursor -> M_B -> compaction_density"
+    moderator: Theta

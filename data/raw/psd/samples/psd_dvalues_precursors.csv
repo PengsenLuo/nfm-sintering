@@ -1,0 +1,4 @@
+sample_id,D10,D50,D90,Span,Dv99,specific_surface_area,concentration,weighted_residual,obscuration
+precursor_L,9.48,12.4,16.2,0.539,19.7,394.4,0.0132,0.53,8.42
+precursor_M,2.98,9.7,17.4,1.484,22.7,738,0.0079,1.22,9.61
+precursor_S,2.75,3.67,4.96,0.602,6.19,1340,0.0041,1.26,9.25
